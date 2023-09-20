@@ -1,0 +1,7 @@
+config.yaml >> config entity folder >> constant >> configuration >> data ingestion
+>> utils file for helper function >> pipeline folder >> app.py
+
+# Data validation steps
+config.yaml >> schema.yaml >> config entity >> artifact entity >> constant file
+>> configuration file >> raw_data_validation file under our config entity file >>
+>> data validation.py under our components folder >> pipeline

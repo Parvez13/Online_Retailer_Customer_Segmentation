@@ -1,0 +1,14 @@
+training_pipeline_config:
+  pipeline_name : customer_segmentation_Artifacts
+  artifact_dir : artifact
+
+data_ingestion_config:
+  dataset_download_url: "https://github.com/Hitesh-Nimbalkar/online_retail_data/blob/main/Online%20Retail_new.zip"
+  ingested_dir: ingested_Data
+  raw_data_dir: raw_data
+
+data_validation_config:
+  schema_dir : config
+  schema_file_name : schema.yaml
+  Train_data: Train_data
+  Test_data : Test_data

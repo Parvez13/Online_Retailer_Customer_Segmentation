@@ -6,7 +6,7 @@ LOG_DIR = "logs"
 
 CURRENT_TIME_STAMP = f"{datetime.now().strftime('%Y-%m-%d %H-%M-%S')}"
 
-log_file_name= f"log{CURRENT_TIME_STEMP}.log"
+log_file_name= f"log{CURRENT_TIME_STAMP}.log"
 
 #making directory
 os.makedirs(LOG_DIR, exist_ok=True)

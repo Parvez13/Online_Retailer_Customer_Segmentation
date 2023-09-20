@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="Black">
+    <option name="executionMode" value="BINARY" />
+    <option name="pathToExecutable" value="C:\Users\prvzs\anaconda3\Scripts\black.exe" />
+    <option name="sdkUUID" value="3715e6ee-030e-4677-99a3-9feb1cdb80c2" />
+  </component>
   <component name="ProjectRootManager" version="2" project-jdk-name="C:\Users\prvzs\OneDrive\Desktop\Online_Retailer_Customer_Segmentation\venv" project-jdk-type="Python SDK" />
+  <component name="PythonCompatibilityInspectionAdvertiser">
+    <option name="version" value="3" />
+  </component>
 </project>

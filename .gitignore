@@ -5,6 +5,7 @@ __pycache__/
 
 pipeline.txt
 customer_segmentation_Artifacts/
+notebook/Online Retail.csv
 # C extensions
 *.so
 

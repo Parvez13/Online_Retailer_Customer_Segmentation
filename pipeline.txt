@@ -5,3 +5,19 @@ config.yaml >> config entity folder >> constant >> configuration >> data ingesti
 config.yaml >> schema.yaml >> config entity >> artifact entity >> constant file
 >> configuration file >> raw_data_validation file under our config entity file >>
 >> data validation.py under our components folder >> pipeline
+
+# Data Transformation Steps
+config.yaml >> transformation.yaml >> config entity >> artifact entity >> constant file
+>> configuration file >> Data transformation pipeline step >> helper function under utils file >>
+pipeline file >> main file
+
+# Model Trianing steps
+config.yaml >> config entity >> artifact entity >> constant file >> configuration file >>
+model trainer pipeline step >> helper function under our utils file >> pipeline
+
+# Model Evaluation Steps
+config_entity >> artifact_entity >> constant file >> configuration file
+>> model pusher pipeline step >> pipeline
+
+# Model Pusher Steps
+artifacts >> components >> pipeline

@@ -90,92 +90,92 @@ class Configuration:
         except Exception as e:
             raise CustomException(e, sys) from e
 
-    # def get_data_transformation_config(self) -> DataTransformationConfig:
-    #     try:
-    #         artifact_dir = self.training_pipeline_config.artifact_dir
-    #         data_transformation_artifact_dir = os.path.join(artifact_dir,
-    #                                                         DATA_TRANSFORMATION_ARTIFACT_DIR,
-    #                                                         self.time_stamp)
+    def get_data_transformation_config(self) -> DataTransformationConfig:
+        try:
+            artifact_dir = self.training_pipeline_config.artifact_dir
+            data_transformation_artifact_dir = os.path.join(artifact_dir,
+                                                            DATA_TRANSFORMATION_ARTIFACT_DIR,
+                                                            self.time_stamp)
+
+            data_transformation_config = self.config_info[DATA_TRANSFORMATION_CONFIG_KEY]
+
+            preprocessed_object_file_path = os.path.join(data_transformation_artifact_dir,
+                                                         data_transformation_config[
+                                                             DATA_TRANSFORMATION_PREPROCESSING_DIR_KEY],
+                                                         data_transformation_config[
+                                                             DATA_TRANSFORMATION_PREPROCESSING_FILE_NAME_KEY])
+
+            feature_engineering_object_file_path = os.path.join(data_transformation_artifact_dir,
+                                                                data_transformation_config[
+                                                                    DATA_TRANSFORMATION_PREPROCESSING_DIR_KEY],
+                                                                data_transformation_config[
+                                                                    DATA_TRANSFORMATION_FEATURE_ENGINEERING_FILE_NAME_KEY])
+
+            transformed_train_dir = os.path.join(data_transformation_artifact_dir,
+                                                 data_transformation_config[DATA_TRANSFORMATION_DIR_NAME_KEY],
+                                                 data_transformation_config[DATA_TRANSFORMATION_TRAIN_DIR_NAME_KEY])
+
+            data_transformation_config = DataTransformationConfig(transformed_train_dir=transformed_train_dir,
+                                                                  preprocessed_object_file_path=preprocessed_object_file_path,
+                                                                  feature_engineering_object_file_path=feature_engineering_object_file_path)
+
+            logging.info(f"Data Transformation Config: {data_transformation_config}")
+            return data_transformation_config
+        except Exception as e:
+            raise CustomException(e, sys) from e
     #
-    #         data_transformation_config = self.config_info[DATA_TRANSFORMATION_CONFIG_KEY]
-    #
-    #         preprocessed_object_file_path = os.path.join(data_transformation_artifact_dir,
-    #                                                      data_transformation_config[
-    #                                                          DATA_TRANSFORMATION_PREPROCESSING_DIR_KEY],
-    #                                                      data_transformation_config[
-    #                                                          DATA_TRANSFORMATION_PREPROCESSING_FILE_NAME_KEY])
-    #
-    #         feature_engineering_object_file_path = os.path.join(data_transformation_artifact_dir,
-    #                                                             data_transformation_config[
-    #                                                                 DATA_TRANSFORMATION_PREPROCESSING_DIR_KEY],
-    #                                                             data_transformation_config[
-    #                                                                 DATA_TRANSFORMATION_FEATURE_ENGINEERING_FILE_NAME_KEY])
-    #
-    #         transformed_train_dir = os.path.join(data_transformation_artifact_dir,
-    #                                              data_transformation_config[DATA_TRANSFORMATION_DIR_NAME_KEY],
-    #                                              data_transformation_config[DATA_TRANSFORMATION_TRAIN_DIR_NAME_KEY])
-    #
-    #         data_transformation_config = DataTransformationConfig(transformed_train_dir=transformed_train_dir,
-    #                                                               preprocessed_object_file_path=preprocessed_object_file_path,
-    #                                                               feature_engineering_object_file_path=feature_engineering_object_file_path)
-    #
-    #         logging.info(f"Data Transformation Config: {data_transformation_config}")
-    #         return data_transformation_config
-    #     except Exception as e:
-    #         raise CustomException(e, sys) from e
-    #
-    # def get_model_trainer_config(self) -> ModelTrainerConfig:
-    #     try:
-    #         artifact_dir = self.training_pipeline_config.artifact_dir
-    #         model_trainer_artifact_dir = os.path.join(artifact_dir,
-    #                                                   MODEL_TRAINER_ARTIFACT_DIR,
-    #                                                   self.time_stamp)
-    #
-    #         model_trainer_config = self.config_info[MODEL_TRAINER_CONFIG_KEY]
-    #
-    #         trained_model_directory = os.path.join(model_trainer_artifact_dir,
-    #                                                model_trainer_config[MODEL_TRAINER_TRAINED_MODEL_DIR])
-    #
-    #         trained_model_file_path = os.path.join(trained_model_directory,
-    #                                                model_trainer_config[MODEL_TRAINER_TRAINED_MODEL_FILE_NAME_KEY])
-    #
-    #         model_config_path = os.path.join(ROOT_DIR, CONFIG_DIR, 'model.yaml')
-    #
-    #         png_location = os.path.join(model_trainer_artifact_dir, 'model_predictions')
-    #         model_report_path = os.path.join(model_trainer_artifact_dir,
-    #                                          model_trainer_config[MODEL_TRAINER_TRAINED_MODEL_DIR])
-    #
-    #         model_trainer_config = ModelTrainerConfig(trained_model_directory=trained_model_directory,
-    #                                                   trained_model_file_path=trained_model_file_path,
-    #                                                   model_config_path=model_config_path,
-    #                                                   report_path=model_report_path,
-    #                                                   png_location=png_location)
-    #         logging.info(f"Model Trainer Config : {model_trainer_config}")
-    #         return model_trainer_config
-    #     except Exception as e:
-    #         raise CustomException(e, sys) from e
-    #
-    # def saved_model_config(self) -> SavedModelConfig:
-    #     try:
-    #         artifact_dir = self.training_pipeline_config.artifact_dir
-    #
-    #         saved_model_file_path = os.path.join(ROOT_DIR, SAVED_MODEL_DIRECTORY, 'model.pkl')
-    #
-    #         saved_report_file_path = os.path.join(ROOT_DIR, SAVED_MODEL_DIRECTORY, MODEL_REPORT_FILE)
-    #         saved_model_prediction_png = os.path.join(ROOT_DIR, SAVED_MODEL_DIRECTORY, 'prediction.png')
-    #
-    #         saved_model_csv = os.path.join(ROOT_DIR, SAVED_MODEL_DIRECTORY, 'rfm.csv')
-    #
-    #         saved_model_config = SavedModelConfig(saved_model_file_path=saved_model_file_path,
-    #                                               saved_report_file_path=saved_report_file_path,
-    #                                               saved_model_csv=saved_model_csv,
-    #                                               saved_model_prediction_png=saved_model_prediction_png)
-    #
-    #         logging.info(f"Model Trainer Config : {saved_model_config}")
-    #         return saved_model_config
-    #
-    #     except Exception as e:
-    #         raise CustomException(e, sys) from e
+    def get_model_trainer_config(self) -> ModelTrainerConfig:
+        try:
+            artifact_dir = self.training_pipeline_config.artifact_dir
+            model_trainer_artifact_dir = os.path.join(artifact_dir,
+                                                      MODEL_TRAINER_ARTIFACT_DIR,
+                                                      self.time_stamp)
+
+            model_trainer_config = self.config_info[MODEL_TRAINER_CONFIG_KEY]
+
+            trained_model_directory = os.path.join(model_trainer_artifact_dir,
+                                                   model_trainer_config[MODEL_TRAINER_TRAINED_MODEL_DIR])
+
+            trained_model_file_path = os.path.join(trained_model_directory,
+                                                   model_trainer_config[MODEL_TRAINER_TRAINED_MODEL_FILE_NAME_KEY])
+
+            model_config_path = os.path.join(ROOT_DIR, CONFIG_DIR, 'model.yaml')
+
+            png_location = os.path.join(model_trainer_artifact_dir, 'model_predictions')
+            model_report_path = os.path.join(model_trainer_artifact_dir,
+                                             model_trainer_config[MODEL_TRAINER_TRAINED_MODEL_DIR])
+
+            model_trainer_config = ModelTrainerConfig(trained_model_directory=trained_model_directory,
+                                                      trained_model_file_path=trained_model_file_path,
+                                                      model_config_path=model_config_path,
+                                                      report_path=model_report_path,
+                                                      png_location=png_location)
+            logging.info(f"Model Trainer Config : {model_trainer_config}")
+            return model_trainer_config
+        except Exception as e:
+            raise CustomException(e, sys) from e
+
+    def saved_model_config(self) -> SavedModelConfig:
+        try:
+            artifact_dir = self.training_pipeline_config.artifact_dir
+
+            saved_model_file_path = os.path.join(ROOT_DIR, SAVED_MODEL_DIRECTORY, 'model.pkl')
+
+            saved_report_file_path = os.path.join(ROOT_DIR, SAVED_MODEL_DIRECTORY, MODEL_REPORT_FILE)
+            saved_model_prediction_png = os.path.join(ROOT_DIR, SAVED_MODEL_DIRECTORY, 'prediction.png')
+
+            saved_model_csv = os.path.join(ROOT_DIR, SAVED_MODEL_DIRECTORY, 'rfm.csv')
+
+            saved_model_config = SavedModelConfig(saved_model_file_path=saved_model_file_path,
+                                                  saved_report_file_path=saved_report_file_path,
+                                                  saved_model_csv=saved_model_csv,
+                                                  saved_model_prediction_png=saved_model_prediction_png)
+
+            logging.info(f"Model Trainer Config : {saved_model_config}")
+            return saved_model_config
+
+        except Exception as e:
+            raise CustomException(e, sys) from e
 
     def get_training_pipeline_config(self) -> TrainingPipelineConfig:
         try:

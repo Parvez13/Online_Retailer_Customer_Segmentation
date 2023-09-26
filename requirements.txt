@@ -2,4 +2,6 @@ pandas
 numpy
 Flask
 dill
+PyYaml
+scikit-learn
 -e .

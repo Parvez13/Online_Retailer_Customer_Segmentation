@@ -58,7 +58,7 @@ class DataIngestion:
             # Print the name of the CSV file
             if csv_file_path is not None:
                 csv_file_name = os.path.basename(csv_file_path)
-                # logging.info("CSV file name:", csv_file_name)
+                logging.info("CSV file name:", csv_file_name)
 
             raw_file_path = os.path.join(raw_data_dir, csv_file_name)
 

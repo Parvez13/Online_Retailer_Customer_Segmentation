@@ -4,6 +4,7 @@ __pycache__/
 *$py.class
 
 pipeline.txt
+customer_segmentation_Artifacts/
 # C extensions
 *.so
 

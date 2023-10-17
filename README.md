@@ -24,3 +24,7 @@ The dataset covers transactional information from December 2010 to December 2011
 
 ![Screenshot 2023-10-16 104220](https://github.com/Parvez13/Online_Retailer_Customer_Segmentation/assets/66157611/547cd053-3032-4d4d-a57a-7e4bde1b9693)
 
+
+https://github.com/Parvez13/Online_Retailer_Customer_Segmentation/assets/66157611/aecded63-20df-47e8-9829-383f70c4fe93
+
+
